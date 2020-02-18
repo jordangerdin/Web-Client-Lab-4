@@ -240,3 +240,36 @@ let nobel_prize_winners_2017 = {
 //   have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.
 
 console.log(sep)
+
+let litPrizeFirst = ""
+let litPrizeLast = ""
+nobel_prize_winners_2017.prizes.forEach(function(obj){
+  if(obj.category === "literature"){
+    litPrizeFirst = obj.laureates[0].firstname
+    litPrizeLast = obj.laureates[0].surname
+  }
+})
+console.log(litPrizeFirst + " " + litPrizeLast)
+
+nobel_prize_winners_2017.prizes.forEach(function(obj){
+  if(obj.category === "physics"){
+    for (laureate in obj.laureates){
+      console.log(obj.laureates[laureate].id)
+    }
+  }
+})
+
+nobel_prize_winners_2017.prizes.forEach(function(obj){
+  console.log(obj.category)
+})
+
+console.log(nobel_prize_winners_2017.prizes.length)
+
+let laureatesCount = 0
+
+nobel_prize_winners_2017.prizes.forEach(function(obj){
+  if(obj.year === "2017"){
+    laureatesCount += obj.laureates.length
+  }
+})
+console.log(laureatesCount)
